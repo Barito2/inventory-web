@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Redirect, useHistory, useParams } from 'react-router-dom'
+import { Redirect, useHistory, useParams } from 'react-router-dom'
 import { findById, save } from "../../actions/unit"
 import { Form } from 'react-bootstrap'
 import { connect } from 'react-redux';
+import { BackComponent } from "../../components";
 
 const UnitForm = ({
     isLoading, unit, savedUnit,
@@ -58,7 +59,8 @@ const UnitForm = ({
             <div className="card p-4 shadow">
                 <h3 className="text-center mb-5">
                     {data?.id ? 'Edit' : 'add'} Unit
-                    <Link to="/units" className="btn btn-secondary float-right">Back</Link>
+                    <BackComponent url="/units" />
+                    {/* <Link to="/units" className="btn btn-secondary float-right">Back</Link> */}
                 </h3>
                 {!isLoading ?
                     <Form onSubmit={handleSubmit}>

@@ -1,30 +1,31 @@
-import { FIND_ALL_UNIT, FIND_UNIT_BY_ID, SAVE_UNIT, REMOVE_UNIT_BY_ID } from "../constants/action"
+import { FIND_ALL_ITEM, FIND_ITEM_BY_ID, SAVE_ITEM, REMOVE_ITEM_BY_ID } from "../constants/action"
 
 export function findAll(action) {
 
     return {
-        type: FIND_ALL_UNIT,
+        type: FIND_ALL_ITEM,
         action
     }
 }
 
 export function findById(id) {
     return {
-        type: FIND_UNIT_BY_ID,
+        type: FIND_ITEM_BY_ID,
         id
     }
 }
 
 export function save(model) {
+    console.log("save item");
     return {
-        type: SAVE_UNIT,
+        type: SAVE_ITEM,
         model
     }
 }
 
 export function removeById(id) {
     return {
-        type: REMOVE_UNIT_BY_ID,
+        type: REMOVE_ITEM_BY_ID,
         id
     }
 }

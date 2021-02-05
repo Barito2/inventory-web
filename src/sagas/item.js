@@ -1,54 +1,54 @@
 import { put, takeLatest } from "redux-saga/effects"
 import {
-    FIND_ALL_UNIT, FIND_ALL_UNIT_FAILURE, FIND_ALL_UNIT_SUCCESS,
-    FIND_UNIT_BY_ID, FIND_UNIT_BY_ID_FAILURE, FIND_UNIT_BY_ID_SUCCESS,
-    REMOVE_UNIT_BY_ID, REMOVE_UNIT_BY_ID_FAILURE, REMOVE_UNIT_BY_ID_SUCCESS,
-    SAVE_UNIT, SAVE_UNIT_FAILURE, SAVE_UNIT_SUCCESS,
+    FIND_ALL_ITEM, FIND_ALL_ITEM_FAILURE, FIND_ALL_ITEM_SUCCESS,
+    FIND_ITEM_BY_ID, FIND_ITEM_BY_ID_FAILURE, FIND_ITEM_BY_ID_SUCCESS,
+    REMOVE_ITEM_BY_ID, REMOVE_ITEM_BY_ID_FAILURE, REMOVE_ITEM_BY_ID_SUCCESS,
+    SAVE_ITEM, SAVE_ITEM_FAILURE, SAVE_ITEM_SUCCESS,
 } from "../constants/action";
 import axios from "../configs/api"
 
-function* findAllUnit(action) {
-    let uri = `/units?`
+function* findAllItem(action) {
+    let uri = `/items?`
     if (action.action) {
         uri += `page=${action.action.page}`
     }
     let result = yield axios.get(uri)
         .then(data => {
             return ({
-                type: FIND_ALL_UNIT_SUCCESS,
+                type: FIND_ALL_ITEM_SUCCESS,
                 data: data.list
             })
         })
         .catch(err => {
             return ({
-                type: FIND_ALL_UNIT_FAILURE,
+                type: FIND_ALL_ITEM_FAILURE,
                 error: err
             })
         })
     yield put(result)
 }
 
-function* findUnitById(action) {
-    let result = yield axios.get(`/units/${action.id}`)
+function* findItemById(action) {
+    let result = yield axios.get(`/items/${action.id}`)
         .then(data => {
             console.log("adaw")
             return ({
-                type: FIND_UNIT_BY_ID_SUCCESS,
+                type: FIND_ITEM_BY_ID_SUCCESS,
                 data: data
             })
         })
         .catch(err => {
             return ({
-                type: FIND_UNIT_BY_ID_FAILURE,
+                type: FIND_ITEM_BY_ID_FAILURE,
                 error: err
             })
         })
     yield put(result)
 }
 
-function* saveUnit(action) {
+function* saveItem(action) {
     let model = action.model;
-    let method = 'POST', url = '/units';
+    let method = 'POST', url = '/items';
     if (model.id) {
         method = "PUT";
         url += `/${model.id}`
@@ -61,13 +61,13 @@ function* saveUnit(action) {
     })
         .then(data => {
             return {
-                type: SAVE_UNIT_SUCCESS,
+                type: SAVE_ITEM_SUCCESS,
                 data: data
             }
         })
         .catch(e => {
             return {
-                type: SAVE_UNIT_FAILURE,
+                type: SAVE_ITEM_FAILURE,
                 error: e
             }
         })
@@ -75,17 +75,17 @@ function* saveUnit(action) {
     yield put(result)
 }
 
-function* removeUnitById(action) {
-    let result = yield axios.delete(`/units/${action.id}`)
+function* removeItemById(action) {
+    let result = yield axios.delete(`/items/${action.id}`)
         .then(data => {
             return ({
-                type: REMOVE_UNIT_BY_ID_SUCCESS,
+                type: REMOVE_ITEM_BY_ID_SUCCESS,
                 data: data.list
             })
         })
         .catch(err => {
             return ({
-                type: REMOVE_UNIT_BY_ID_FAILURE,
+                type: REMOVE_ITEM_BY_ID_FAILURE,
                 error: err
             })
         })
@@ -94,18 +94,18 @@ function* removeUnitById(action) {
 
 
 
-export function* watchFindAllUnit() {
-    yield takeLatest(FIND_ALL_UNIT, findAllUnit)
+export function* watchFindAllItem() {
+    yield takeLatest(FIND_ALL_ITEM, findAllItem)
 }
 
-export function* watchFindUnitById() {
-    yield takeLatest(FIND_UNIT_BY_ID, findUnitById)
+export function* watchFindItemById() {
+    yield takeLatest(FIND_ITEM_BY_ID, findItemById)
 }
 
-export function* watchSaveUnit() {
-    yield takeLatest(SAVE_UNIT, saveUnit)
+export function* watchSaveItem() {
+    yield takeLatest(SAVE_ITEM, saveItem)
 }
 
-export function* watchRemoveByid() {
-    yield takeLatest(REMOVE_UNIT_BY_ID, removeUnitById)
+export function* watchRemoveItemByid() {
+    yield takeLatest(REMOVE_ITEM_BY_ID, removeItemById)
 }

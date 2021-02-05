@@ -1,4 +1,4 @@
-import { UnitForm, UnitList, Error } from "../pages";
+import { UnitForm, UnitList, ItemList, ItemForm, Error, StockList, StockForm } from "../pages";
 
 const routes = [
     {
@@ -14,6 +14,36 @@ const routes = [
     {
         path: '/unit/:id/edit',
         component: <UnitForm />,
+        exact: true
+    },
+    {
+        path: '/items',
+        component: <ItemList />,
+        exact: true
+    },
+    {
+        path: '/item/add',
+        component: <ItemForm />,
+        exact: true
+    },
+    {
+        path: '/item/:id/edit',
+        component: <ItemForm />,
+        exact: true
+    },
+    {
+        path: '/stocks',
+        component: <StockList />,
+        exact: true
+    },
+    {
+        path: '/stock/add',
+        component: <StockForm />,
+        exact: true
+    },
+    {
+        path: '/stock/:id/edit',
+        component: <StockForm />,
         exact: true
     },
     {
