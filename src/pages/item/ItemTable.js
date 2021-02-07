@@ -9,6 +9,7 @@ import { Col, Row } from 'react-bootstrap';
 const { SearchBar } = Search;
 
 function ItemTable(props) {
+
     const columns = [
         {
             dataField: 'id',
@@ -71,7 +72,6 @@ function ItemTable(props) {
         dataField: 'id',
         order: 'asc'
     }];
-
     return (
         <div>
             <ToolkitProvider

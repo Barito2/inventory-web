@@ -63,22 +63,22 @@ const UnitForm = ({
                     {/* <Link to="/units" className="btn btn-secondary float-right">Back</Link> */}
                 </h3>
                 {!isLoading ?
-                    <Form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
 
                         <input onChange={handleChange} type="text" value={data?.id || ''} name="id" hidden={true} />
 
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Code</Form.Label>
-                            <Form.Control onChange={handleChange} type="text" placeholder="code" name="code" value={data?.code || ""} />
+                            <Form.Control onChange={handleChange} type="text" placeholder="code" name="code" value={data?.code || ""} required={true} />
                         </Form.Group>
 
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control onChange={handleChange} type="text" placeholder="description" name="description" value={data?.description || ""} />
+                            <Form.Control onChange={handleChange} type="text" placeholder="description" name="description" value={data?.description || ""} required={true} />
                         </Form.Group>
 
                         <input type="submit" className="btn btn-primary" value={data?.id ? 'Update' : 'Submit'} />
-                    </Form>
+                    </form>
                     : <div>Loading ...</div>}
             </div>
         </div>

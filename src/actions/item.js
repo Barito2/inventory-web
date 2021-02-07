@@ -1,4 +1,4 @@
-import { FIND_ALL_ITEM, FIND_ITEM_BY_ID, SAVE_ITEM, REMOVE_ITEM_BY_ID } from "../constants/action"
+import { FIND_ALL_ITEM, FIND_ITEM_BY_ID, SAVE_ITEM, REMOVE_ITEM_BY_ID, UPLOAD_ITEM_BY_ID } from "../constants/action"
 
 export function findAll(action) {
 
@@ -19,6 +19,14 @@ export function save(model) {
     console.log("save item");
     return {
         type: SAVE_ITEM,
+        model
+    }
+}
+
+export function upload(model) {
+    console.log("upload item");
+    return {
+        type: UPLOAD_ITEM_BY_ID,
         model
     }
 }

@@ -1,4 +1,5 @@
 import { UnitForm, UnitList, ItemList, ItemForm, Error, StockList, StockForm } from "../pages";
+import { CoroselComponent } from "../components";
 
 const routes = [
     {
@@ -44,6 +45,11 @@ const routes = [
     {
         path: '/stock/:id/edit',
         component: <StockForm />,
+        exact: true
+    },
+    {
+        path: '/',
+        component: <CoroselComponent />,
         exact: true
     },
     {

@@ -12,11 +12,11 @@ function* findAllStock(action) {
     if (action.action) {
         uri += `page=${action.action.page}`
     }
-    let result = yield axios.get('/stocks/summaries')
+    let result = yield axios.get('/stocks')
         .then(data => {
             return ({
                 type: FIND_ALL_STOCK_SUCCESS,
-                data: data
+                data: data.list
             })
         })
         .catch(err => {
@@ -76,7 +76,7 @@ function* saveStock(action) {
 }
 
 function* removeStockById(action) {
-    let result = yield axios.delete(`/STOCKs/${action.id}`)
+    let result = yield axios.delete(`/stocks/${action.id}`)
         .then(data => {
             return ({
                 type: REMOVE_STOCK_BY_ID_SUCCESS,

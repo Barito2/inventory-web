@@ -7,19 +7,19 @@ import swal from 'sweetalert';
 import { Container, Paginate, successComponent, AddComponent, ReloadComponent } from "../../components";
 import ItemTable from "./ItemTable";
 
-function ItemRow({ index, data, onDeleted }) {
-    return (
-        <tr>
-            <td style={{ width: "5%" }}> {Number(index) + 1} </td>
-            <td> {data.name} </td>
-            <td> {data.price} </td>
-            <td>
-                <Link className="btn btn-warning mr-2" to={`/item/${data.id}/edit`}> Edit </Link>
-                <button onClick={onDeleted} className="btn btn-danger"> Delete </button>
-            </td>
-        </tr>
-    )
-}
+// function ItemRow({ index, data, onDeleted }) {
+//     return (
+//         <tr>
+//             <td style={{ width: "5%" }}> {Number(index) + 1} </td>
+//             <td> {data.name} </td>
+//             <td> {data.price} </td>
+//             <td>
+//                 <Link className="btn btn-warning mr-2" to={`/item/${data.id}/edit`}> Edit </Link>
+//                 <button onClick={onDeleted} className="btn btn-danger"> Delete </button>
+//             </td>
+//         </tr>
+//     )
+// }
 
 function ItemList({
     items, isLoading, isRemoved, error

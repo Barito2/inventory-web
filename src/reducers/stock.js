@@ -11,7 +11,7 @@ const initialState = {
     error: null
 }
 
-export const findAllSTOCK = (state = initialState, action) => {
+export const findAllStock = (state = initialState, action) => {
     switch (action.type) {
         case FIND_ALL_STOCK:
             return {
@@ -38,7 +38,7 @@ export const findAllSTOCK = (state = initialState, action) => {
     }
 }
 
-export const findSTOCKById = (state = { ...initialState, data: false }, action) => {
+export const findStockById = (state = { ...initialState, data: false }, action) => {
     console.log("find STOCK success");
     switch (action.type) {
         case FIND_STOCK_BY_ID:
@@ -63,7 +63,7 @@ export const findSTOCKById = (state = { ...initialState, data: false }, action) 
     }
 }
 
-export const saveSTOCK = (state = { ...initialState }, action) => {
+export const saveStock = (state = { ...initialState }, action) => {
     switch (action.type) {
         case SAVE_STOCK:
             return {
@@ -91,7 +91,7 @@ export const saveSTOCK = (state = { ...initialState }, action) => {
     }
 }
 
-export const removeSTOCKById = (state = { ...initialState, data: false }, action) => {
+export const removeStockById = (state = { ...initialState, data: false }, action) => {
     switch (action.type) {
         case REMOVE_STOCK_BY_ID:
             return {

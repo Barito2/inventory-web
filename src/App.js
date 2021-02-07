@@ -8,7 +8,7 @@ import {
 import { Provider } from "react-redux";
 import store from './configs/store';
 import { NavbarComponent } from "./components";
-import { Container, Jumbotron } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 function App() {
   return (

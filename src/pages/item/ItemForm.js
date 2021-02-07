@@ -79,24 +79,22 @@ const ItemForm = ({
 
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control onChange={handleChange} type="text" placeholder="name" name="name" value={data?.name || ""} />
+                            <Form.Control onChange={handleChange} type="text" placeholder="name" name="name" value={data?.name || ""} required={true} />
                         </Form.Group>
 
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Price</Form.Label>
-                            <Form.Control onChange={handleChange} type="number" placeholder="price" name="price" value={data?.price || ""} />
+                            <Form.Control onChange={handleChange} type="number" placeholder="price" name="price" value={data?.price || ""} required={true} />
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Unit</Form.Label>
-                            <Form.Control as="select" name="unitId" onChange={handleChange}>
+                            <Form.Control as="select" name="unitId" onChange={handleChange} required={true}>
                                 <option >-- Choose --</option>
                                 {
-                                    units.map((e, i) => {
-                                        return (
-                                            <option value={e.id} selected={e.id === data?.unit?.id || false} >{e.code}</option>
-                                        )
-                                    })
+                                    units.map((e, i) => (
+                                        <option value={e.id} selected={e.id === data?.unit?.id || false} >{e.code}</option>
+                                    ))
                                 }
                             </Form.Control>
                         </Form.Group>
