@@ -1,4 +1,4 @@
-import { UnitForm, UnitList, ItemList, ItemForm, Error, StockList, StockForm } from "../pages";
+import { UnitForm, UnitList, ItemList, ItemForm, Error, StockList, StockForm, ItemFormUpload } from "../pages";
 import { CoroselComponent } from "../components";
 
 const routes = [
@@ -25,6 +25,11 @@ const routes = [
     {
         path: '/item/add',
         component: <ItemForm />,
+        exact: true
+    },
+    {
+        path: '/item/:id/upload',
+        component: <ItemFormUpload />,
         exact: true
     },
     {

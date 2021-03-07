@@ -49,7 +49,7 @@ function ItemTable(props) {
             text: 'Action',
             text: 'Action', headerStyle: () => {
                 return {
-                    width: "25%",
+                    width: "40%",
                     backgroundColor: 'black',
                     color: 'white'
                 }
@@ -59,6 +59,7 @@ function ItemTable(props) {
                     <Container>
                         <EditComponent url={`item/${row.id}/edit`} />
                         <DeleteComponent onDeleted={props.onDeleted} id={row.id} />
+                        <Link to={`/item/${row.id}/upload`} className="btn btn-info">Upload Image</Link>
 
                         {/* <Link className="btn btn-warning mr-2" to={`item/${row.id}/edit`}> Edit </Link>
                         <button onClick={() => props.onDeleted(row.id)} className="btn btn-danger"> Delete </button> */}

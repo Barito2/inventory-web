@@ -4,6 +4,7 @@ import {
     FIND_ITEM_BY_ID, FIND_ITEM_BY_ID_FAILURE, FIND_ITEM_BY_ID_SUCCESS,
     REMOVE_ITEM_BY_ID, REMOVE_ITEM_BY_ID_FAILURE, REMOVE_ITEM_BY_ID_SUCCESS,
     SAVE_ITEM, SAVE_ITEM_FAILURE, SAVE_ITEM_SUCCESS,
+    UPLOAD_ITEM_BY_ID, UPLOAD_ITEM_BY_ID_FAILURE, UPLOAD_ITEM_BY_ID_SUCCESS
 } from "../constants/action";
 import axios from "../configs/api"
 
@@ -43,6 +44,31 @@ function* findItemById(action) {
                 error: err
             })
         })
+    yield put(result)
+}
+
+function* uploadItem(action) {
+    let model = action.model;
+    let method = 'POST', url = `/items/${action.id}/image`;
+
+    let result = yield axios({
+        url: url,
+        method: method,
+        data: model
+    })
+        .then(data => {
+            return {
+                type: UPLOAD_ITEM_BY_ID_SUCCESS,
+                data: data
+            }
+        })
+        .catch(e => {
+            return {
+                type: UPLOAD_ITEM_BY_ID_FAILURE,
+                error: e
+            }
+        })
+
     yield put(result)
 }
 
@@ -104,6 +130,10 @@ export function* watchFindItemById() {
 
 export function* watchSaveItem() {
     yield takeLatest(SAVE_ITEM, saveItem)
+}
+
+export function* watchUploadItem() {
+    yield takeLatest(UPLOAD_ITEM_BY_ID, uploadItem)
 }
 
 export function* watchRemoveItemByid() {

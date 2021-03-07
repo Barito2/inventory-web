@@ -3,6 +3,7 @@ import {
     FIND_ITEM_BY_ID, FIND_ITEM_BY_ID_FAILURE, FIND_ITEM_BY_ID_SUCCESS,
     REMOVE_ITEM_BY_ID, REMOVE_ITEM_BY_ID_FAILURE, REMOVE_ITEM_BY_ID_SUCCESS,
     SAVE_ITEM, SAVE_ITEM_FAILURE, SAVE_ITEM_SUCCESS,
+    UPLOAD_ITEM_BY_ID, UPLOAD_ITEM_BY_ID_FAILURE, UPLOAD_ITEM_BY_ID_SUCCESS,
 } from "../constants/action";
 
 const initialState = {
@@ -78,6 +79,34 @@ export const saveItem = (state = { ...initialState }, action) => {
                 error: null
             };
         case SAVE_ITEM_FAILURE:
+            return {
+                data: null,
+                isLoading: false,
+                error: null
+            };
+        default:
+            return {
+                ...state,
+                data: null
+            };
+    }
+}
+
+export const uploadItem = (state = { ...initialState }, action) => {
+    switch (action.type) {
+        case UPLOAD_ITEM_BY_ID:
+            return {
+                ...state,
+                data: null,
+                isLoading: true
+            }
+        case UPLOAD_ITEM_BY_ID_SUCCESS:
+            return {
+                data: action.data,
+                isLoading: false,
+                error: null
+            };
+        case UPLOAD_ITEM_BY_ID_FAILURE:
             return {
                 data: null,
                 isLoading: false,
